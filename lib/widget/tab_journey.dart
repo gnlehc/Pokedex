@@ -5,7 +5,7 @@ class TabBarWidget extends StatelessWidget {
   final Color boxColor;
   final String judul;
 
-  TabBarWidget({
+  const TabBarWidget({
     Key? key,
     required this.containerColor,
     required this.boxColor,
