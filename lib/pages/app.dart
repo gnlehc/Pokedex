@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_flutter/widget/main_home_page.dart';
-import 'package:pokemon_flutter/widget/pokemon_news.dart';
+import 'package:pokemon_flutter/pages/main_home_page.dart';
+import 'package:pokemon_flutter/widgets/pokemon_news.dart';
 
 class AppPage extends StatelessWidget {
   const AppPage({Key? key}) : super(key: key);
