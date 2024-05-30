@@ -16,8 +16,14 @@ class PokemonCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => PokemonDetailsPage(pokemonImagePath),
+            PageRouteBuilder(
+              transitionDuration: Duration(milliseconds: 500),
+              pageBuilder: (context, animation, secondaryAnimation) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: PokemonDetailsPage(pokemonImagePath),
+                );
+              },
             ),
           );
         },
@@ -29,23 +35,8 @@ class PokemonCard extends StatelessWidget {
           padding: const EdgeInsets.all(12),
           child: Stack(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    pokemonImagePath.split("/").last.split(".").first,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                    textAlign: TextAlign.start,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
-              Positioned(
-                bottom: -2,
-                right: 0,
+              Hero(
+                tag: pokemonImagePath, // Unique tag for the Hero animation
                 child: Image.asset(
                   pokemonImagePath,
                   width: 70,
@@ -53,6 +44,19 @@ class PokemonCard extends StatelessWidget {
                   errorBuilder: (context, error, stackTrace) {
                     return const Icon(Icons.error);
                   },
+                ),
+              ),
+              Positioned(
+                bottom: -2,
+                right: 0,
+                child: Text(
+                  pokemonImagePath.split("/").last.split(".").first,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.start,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ],

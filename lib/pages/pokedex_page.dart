@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_flutter/pages/pokemon_detail_page.dart';
 import 'package:pokemon_flutter/widgets/pokemon_card.dart';
 
 class PokedexPage extends StatelessWidget {
